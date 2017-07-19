@@ -1,0 +1,53 @@
+<beans xmlns="http://www.springframework.org/schema/beans"  
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+	   xmlns:context="http://www.springframework.org/schema/context"  
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"  
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans   
+						   http://www.springframework.org/schema/beans/spring-beans.xsd  
+						   http://www.springframework.org/schema/context  
+						   http://www.springframework.org/schema/context/spring-context-3.1.xsd  
+						   http://www.springframework.org/schema/mvc  
+ 						   http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+	
+	  <mvc:annotation-driven/>
+	  
+	  <context:annotation-config/>
+	  
+	  <context:component-scan base-package="br.com.itexto.springforum.controladores."/>
+
+      <mvc:resources location="/recursos/" mapping="/recursos/**" cache-period="120"/>
+      
+      <!-- Mapeamento de recursos a partir do sistema de arquivos -->
+      <mvc:resources location="file:/arquivos" mapping="/recursos/**"/>
+      
+      <!-- Mapeamento de recursos a partir do classpath  -->
+      <mvc:resources location="classpath:springforum.imagens" mapping="/recursos/**"/>
+      
+      <!-- View Resolver -->
+      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+      		<property name="prefix" value="/views"></property>
+      		<property name="suffix" value=".jsp"></property>
+      </bean>
+      
+      <!-- Referencia ao Tiles Resolver -->
+      <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+      		<property name="viewClass" class="org.springframework.web.servlet.view.tiles2.TilesView"/>
+      </bean>
+
+	  <!-- Instrui o Tiles a respeito de quais arquivos de configuracao deverao ser levados em 
+	  	   consideracao durante a execucao: TilesConfigurer -->
+	  <bean class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
+	  		<property name="definition">
+	  		<list>
+	  			<value>/tiles/tiles-config.xml</value>
+	  		</list>
+	  		</property>
+	  </bean>
+	  
+	  <!-- Upload de Arquivos -->
+	  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	  	<property name="maxUploadSize" value="1048576"/>
+	  </bean>      
+      
+</beans> 						   
