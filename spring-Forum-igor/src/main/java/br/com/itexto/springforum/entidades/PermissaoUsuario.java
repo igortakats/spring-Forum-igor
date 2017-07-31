@@ -1,5 +1,7 @@
 package br.com.itexto.springforum.entidades;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,9 @@ import org.hibernate.annotations.GenerationTime;
 import org.springframework.security.core.GrantedAuthority;
 
 @Entity @Table(name="permissao_usuario")
-public class PermissaoUsuario  implements GrantedAuthority, java.io.Serializable {
+public class PermissaoUsuario  implements GrantedAuthority, Serializable {
+	
+	private static final long serialVersionUID = 1812550269891887757L;
 	
 	@Id @Generated(GenerationTime.INSERT) 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

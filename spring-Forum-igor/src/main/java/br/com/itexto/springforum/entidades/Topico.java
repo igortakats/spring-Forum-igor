@@ -19,6 +19,8 @@ import org.hibernate.annotations.GenerationTime;
 @Entity @Table(name="topico")
 public class Topico implements java.io.Serializable {
 	
+	private static final long serialVersionUID = -6566782768410603116L;
+	
 	@Id @Generated(GenerationTime.INSERT) 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id", unique=true) 

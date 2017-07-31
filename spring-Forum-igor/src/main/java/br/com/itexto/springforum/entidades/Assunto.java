@@ -11,7 +11,9 @@ import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
 @Entity @Table(name="assunto")
-public class Assunto implements Comparable, java.io.Serializable {
+public class Assunto implements Comparable<Object>, java.io.Serializable {
+	
+	private static final long serialVersionUID = -2872847089464608575L;
 	
 	@Id @Generated(GenerationTime.INSERT) 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

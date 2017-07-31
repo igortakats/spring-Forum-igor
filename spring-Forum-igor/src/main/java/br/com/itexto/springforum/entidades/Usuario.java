@@ -47,9 +47,6 @@ public class Usuario implements java.io.Serializable {
 	@Column(name="twitter", nullable=true, length=64, unique=true)
 	private String twitter;
 	
-	
-	
-	
 	private transient String senha;
 	@Column(name="ultimo_login", nullable=true) @Temporal(TemporalType.TIMESTAMP)
 	private Date ultimoLogin;
@@ -109,7 +106,4 @@ public class Usuario implements java.io.Serializable {
 	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
-	
-
 }
